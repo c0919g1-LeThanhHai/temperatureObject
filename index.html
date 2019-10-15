@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="number" oninput="newTemp(this.value);">
+<p id="result"></p>
+<script>
+    let Temperature = function(C) {
+        this.c = C;
+        this.getC = function() {
+            return this.c;
+        };
+        this.setC = function(C) {
+            this.c = C;
+        }
+
+        this.changeToF = function() {
+            return (Number(this.getC()) * 1.8) + 32;
+        };
+
+        this.changeToK = function() {
+            return (Number(this.getC()) + 273.15);
+        };
+    }
+    function newTemp(temp) {
+        let temperature = new Temperature(temp);
+        document.getElementById("result").innerText = `Độ F = ${temperature.changeToF()}\nĐộ Kevin = ${temperature.changeToK()}`;
+    }
+</script>
+</body>
+</html>
